@@ -1,0 +1,144 @@
+.footer {
+  width: 100%;
+  background: #e4ddd4;
+  padding-bottom: 5vw;
+
+  .top {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    padding-left: 8vw;
+    display: flex;
+    align-items: flex-end;
+
+    @media screen and (max-width: 1000px) {
+      padding-left: 3vw;
+      flex-wrap: wrap;
+      gap: 15vw;
+    }
+
+    .items {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+
+      @media screen and (max-width: 1000px) {
+        width: 100%;
+      }
+    }
+
+    .icons {
+      margin-top: 8vw;
+      display: flex;
+      gap: 1.2rem;
+
+      @media screen and (max-width: 1000px) {
+        margin-top: 12vw;
+      }
+
+      @media screen and (max-width: 800px) {
+        margin-top: 16vw;
+      }
+
+      @media screen and (max-width: 600px) {
+        margin-top: 18vw;
+      }
+
+      svg {
+        height: 1.3rem;
+        width: 1.3rem;
+      }
+    }
+
+    .separator {
+      width: 100%;
+      height: 1px;
+      background: rgba(0, 0, 0, 0.349);
+      display: none;
+
+      @media screen and (max-width: 1000px) {
+        display: block;
+        margin-top: 3vw;
+      }
+
+      @media screen and (max-width: 800px) {
+        margin-top: 4vw;
+      }
+
+      @media screen and (max-width: 600px) {
+        margin-top: 5vw;
+      }
+    }
+
+    .contact {
+      width: 50%;
+      padding-bottom: 0.5vw;
+
+      @media screen and (max-width: 1000px) {
+        width: 100%;
+      }
+
+      .text {
+        font-family: At hauss light;
+        margin-bottom: 8vw;
+
+        @media screen and (max-width: 1000px) {
+          margin-bottom: 12vw;
+        }
+
+        @media screen and (max-width: 800px) {
+          margin-bottom: 16vw;
+        }
+
+        @media screen and (max-width: 600px) {
+          margin-bottom: 18vw;
+        }
+      }
+
+      .newsletter {
+        text-transform: uppercase;
+      }
+
+      .input {
+        width: 100%;
+        border: none;
+        outline: none;
+        border-bottom: 1px rgba(0, 0, 0, 0.486) solid;
+        background: transparent;
+        height: 4vw;
+        margin-top: 1.5vw;
+
+        @media screen and (max-width: 1000px) {
+          height: 8vw;
+          margin-top: 4vw;
+        }
+
+        @media screen and (max-width: 800px) {
+          height: 10vw;
+          margin-top: 6vw;
+        }
+
+        @media screen and (max-width: 600px) {
+          height: 12vw;
+          margin-top: 8vw;
+        }
+
+        &::placeholder {
+          font-size: 1.7vw;
+          font-family: At hauss light;
+
+          @media screen and (max-width: 1000px) {
+            font-size: 4vw;
+          }
+
+          @media screen and (max-width: 800px) {
+            font-size: 5vw;
+          }
+
+          @media screen and (max-width: 600px) {
+            font-size: 6vw;
+          }
+        }
+      }
+    }
+  }
+}

@@ -13,12 +13,12 @@ export const titleVariants = {
       ease: [0.34, 0.63, 0, 0.99],
     },
   }),
-  exit: {
-    transition: {
-      staggerChildren: 0.05,
-      staggerDirection: -1,
-    },
-  },
+  // exit: {
+  //   transition: {
+  //     staggerChildren: 0.05,
+  //     staggerDirection: -1,
+  //   },
+  // },
 };
 
 export const wordVariants = {
@@ -32,13 +32,13 @@ export const wordVariants = {
       ease: [0.34, 0.63, 0, 0.99],
     },
   },
-  exit: {
-    y: "280%",
-    transition: {
-      duration: 0.8,
-      ease: [0.34, 0.63, 0, 0.99],
-    },
-  },
+  // exit: {
+  //   y: "280%",
+  //   transition: {
+  //     duration: 0.8,
+  //     ease: [0.34, 0.63, 0, 0.99],
+  //   },
+  // },
 };
 
 export const imageVariants = {
