@@ -1,0 +1,37 @@
+.item {
+  font-size: 5rem;
+  $color: #e4ddd4;
+  color: $color;
+  text-decoration: none;
+  letter-spacing: -0.25rem;
+  display: flex;
+  align-items: flex-end;
+  line-height: 1;
+
+  &[aria-current="page"] {
+    .icon {
+      height: 1.2rem;
+      width: 1.2rem;
+      margin-left: 0.3rem;
+    }
+  }
+
+  &[aria-current="page"],
+  &:hover {
+    .icon {
+      height: 1rem;
+      width: 1rem;
+      margin-left: 0.3rem;
+    }
+  }
+
+  .icon {
+    fill: $color;
+    height: 0rem;
+    width: 0rem;
+    transform: translateY(0.15rem);
+    transition: 300ms;
+    stroke-width: 2px;
+    margin-left: 0;
+  }
+}

@@ -1,10 +1,11 @@
 export const containerVariants = {
   initial: {},
-  animate: {
+  animate: ([delayChildren] = [0]) => ({
     transition: {
       staggerChildren: 0.06,
+      delayChildren,
     },
-  },
+  }),
   exit: {
     transition: {
       staggerChildren: 0.05,
@@ -15,7 +16,7 @@ export const containerVariants = {
 
 export const curtinVariants = {
   initial: {
-    y: "180%",
+    y: "280%",
   },
   animate: {
     y: 0,
@@ -25,7 +26,7 @@ export const curtinVariants = {
     },
   },
   exit: {
-    opacity: 0,
+    y: "280%",
     transition: {
       duration: 0.8,
       ease: [0.34, 0.63, 0, 0.99],
