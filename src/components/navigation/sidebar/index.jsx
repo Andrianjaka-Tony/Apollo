@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { FaTwitter } from "react-icons/fa6";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";
 import { FaFacebookF } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 import styles from "./style.module.scss";
 import WrappedText from "../../wrapped-text";
@@ -13,7 +13,9 @@ import Item from "./item";
 import { items } from "./items";
 import { iconVariants, iconsVariants, sidebarCloseVariants } from "./anime";
 
-export default function Sidebar() {
+export default function Sidebar({ setSidebarOpen }) {
+  const [imageIndex, setImageIndex] = useState(-1);
+
   const icons = [<FaTwitter />, <FaLinkedinIn />, <FaInstagram />, <FaFacebookF />, <FaGithub />];
 
   return (
@@ -22,22 +24,49 @@ export default function Sidebar() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{
-        duration: 0.4,
+        duration: 0.2,
       }}
       className={styles.sidebar}
     >
+      <div className={styles["sidebar-items"]}>
+        {items.map((item, index) => (
+          <motion.div whileHover={() => setImageIndex(index)} onHoverEnd={() => setImageIndex(-1)} key={index}>
+            <Item {...item} />
+          </motion.div>
+        ))}
+      </div>
+      <div className={styles["sidebar-image"]}>
+        <AnimatePresence mode="wait">
+          {imageIndex >= 0 && (
+            <motion.img
+              src={items[imageIndex].image}
+              initial={{ scale: 0 }}
+              animate={{
+                scale: 1,
+                rotate: `${Math.random() * 21 - 10}deg`,
+                transition: {
+                  ease: [0.34, 0.63, 0, 0.99],
+                  duration: 1,
+                },
+              }}
+              exit={{
+                scale: 0,
+                transition: {
+                  duration: 0.4,
+                  ease: [0.34, 0.63, 0, 0.99],
+                },
+              }}
+            />
+          )}
+        </AnimatePresence>
+      </div>
       <div className={styles["sidebar-top"]}>
         <h3 className={styles["sidebar-logo"]}>
           <WrappedText transition={[1]} text="Appolo" />
         </h3>
-        <motion.span variants={sidebarCloseVariants} initial="initial" animate="animate" exit="exit" className={styles["sidebar-close"]}>
+        <motion.span onClick={() => setSidebarOpen(false)} variants={sidebarCloseVariants} initial="initial" animate="animate" exit="exit" className={styles["sidebar-close"]}>
           <IoCloseSharp />
         </motion.span>
-      </div>
-      <div className={styles["sidebar-items"]}>
-        {items.map((item, index) => (
-          <Item {...item} key={index} />
-        ))}
       </div>
       <div className={styles["sidebar-footer"]}>
         <motion.div variants={iconsVariants} initial="initial" animate="animate" exit="exit" className={styles["sidebar-icons"]}>
