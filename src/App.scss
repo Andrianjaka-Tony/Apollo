@@ -1,0 +1,65 @@
+:root {
+  font-size: 16px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: At hauss regular;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+@font-face {
+  font-family: Little muffin;
+  src: url(./fonts/LittleMuffin-Black.ttf);
+}
+
+@font-face {
+  font-family: At hauss bold;
+  src: url(./fonts/AtHaussTRIAL-Bold.otf);
+}
+
+@font-face {
+  font-family: At hauss light;
+  src: url(./fonts/AtHaussTRIAL-Light.otf);
+}
+
+@font-face {
+  font-family: At hauss medium;
+  src: url(./fonts/AtHaussTRIAL-Medium.otf);
+}
+
+@font-face {
+  font-family: At hauss regular;
+  src: url(./fonts/AtHaussTRIAL-Regular.otf);
+}
