@@ -1,0 +1,88 @@
+.hero {
+  width: 100vw;
+  padding-inline: 2vw;
+  min-height: 100vh;
+  padding-block: 8vw 4vw;
+
+  @media screen and (max-width: 1000px) {
+    padding-block: 20vw 10vw;
+  }
+
+  @media screen and (max-width: 800px) {
+    padding-block: 24vw 12vw;
+  }
+
+  @media screen and (max-width: 600px) {
+    padding-block: 34vw 17vw;
+  }
+
+  .title {
+    padding-inline: 6vw;
+    font-size: 4.4vw;
+    letter-spacing: -0.2vw;
+    line-height: 1.08;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-weight: inherit;
+    margin-bottom: 7vw;
+
+    @media screen and (max-width: 1000px) {
+      font-size: 5vw;
+      padding-inline: 4vw;
+      letter-spacing: -0.25vw;
+      margin-bottom: 10vw;
+    }
+
+    @media screen and (max-width: 800px) {
+      font-size: 6vw;
+      padding-inline: 3.5vw;
+      letter-spacing: -0.32vw;
+      margin-bottom: 12vw;
+    }
+
+    @media screen and (max-width: 600px) {
+      font-size: 8vw;
+      padding-inline: 2.5vw;
+      letter-spacing: -0.38vw;
+      margin-bottom: 14vw;
+    }
+
+    .word {
+      margin-left: 1.1vw;
+      overflow: hidden;
+      display: flex;
+
+      @media screen and (max-width: 1000px) {
+        margin-left: 1.25vw;
+      }
+
+      @media screen and (max-width: 800px) {
+        margin-left: 1.5vw;
+      }
+
+      @media screen and (max-width: 600px) {
+        margin-left: 2vw;
+      }
+    }
+  }
+
+  .image-container {
+    position: relative;
+    width: 100%;
+    height: fit-content;
+
+    .image {
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+
+  .details {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    margin-bottom: 1.5vw;
+  }
+}
