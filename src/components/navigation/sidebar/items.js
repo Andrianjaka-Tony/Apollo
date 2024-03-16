@@ -19,4 +19,9 @@ export const items = [
     to: "/marketplace",
     image: "/images/4.jpg",
   },
+  {
+    name: "Profile",
+    to: "/profile",
+    image: "/images/4.jpg",
+  },
 ];
