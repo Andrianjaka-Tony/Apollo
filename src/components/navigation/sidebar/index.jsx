@@ -31,7 +31,7 @@ export default function Sidebar({ setSidebarOpen }) {
       <div className={styles["sidebar-items"]}>
         {items.map((item, index) => (
           <motion.div whileHover={() => setImageIndex(index)} onHoverEnd={() => setImageIndex(-1)} key={index}>
-            <Item {...item} />
+            <Item setSidebarOpen={setSidebarOpen} {...item} />
           </motion.div>
         ))}
       </div>

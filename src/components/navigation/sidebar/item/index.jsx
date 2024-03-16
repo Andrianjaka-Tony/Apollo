@@ -8,9 +8,9 @@ import WrappedText from "../../../wrapped-text";
 
 const transition = { duration: 1, ease: [0.34, 0.63, 0, 0.99] };
 
-export default function Item({ name, to }) {
+export default function Item({ name, to, setSidebarOpen }) {
   return (
-    <NavLink to={to} className={styles.item}>
+    <NavLink onClick={() => setSidebarOpen(false)} to={to} className={styles.item}>
       <motion.div transition={transition} initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.8 } }}>
         <GoArrowUpRight className={styles["icon"]} />
       </motion.div>
