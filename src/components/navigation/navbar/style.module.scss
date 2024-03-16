@@ -1,3 +1,34 @@
-.navbar {
-  background: #242320;
+.nav {
+  // background: #242320;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .nav-logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+
+    [data-classname="character"] {
+      font-family: Little muffin;
+    }
+  }
+
+  .nav-burger {
+    background: #242320;
+    height: 3rem;
+    width: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    svg {
+      fill: white;
+    }
+  }
 }
