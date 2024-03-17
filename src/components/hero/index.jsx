@@ -22,6 +22,8 @@ const Image = () => {
   return <motion.img variants={imageVariants} initial="initial" animate="animate" exit="exit" src="/images/1.jpg" alt="Hero image" className={styles.image} />;
 };
 
+// Expand your artistic horizons and ignite your creativity with our platform. Let your imagination soar as you share and discover a world of captivating artworks. Together, let's paint a canvas of inspiration and cultural enrichment. Keep exploring, keep creating, keep inspiring!
+
 export default function Hero() {
   return (
     <motion.div
@@ -34,7 +36,7 @@ export default function Hero() {
       }}
       className={styles.hero}
     >
-      <Title title="Apollo is a web application to discover, share and buy art work or something that has a relation with art." />
+      <Title title="Discover, Share, and Create: Your Gateway to Artistic Inspiration and Cultural Connection on Apollo." />
       <div className={styles.details}>
         <p>2024</p>
         <p>Motion corporation</p>
