@@ -1,0 +1,29 @@
+@use '../../breakpoints'
+
+.contentContainer
+    width: 100%
+    display: flex
+    align-items: flex-end
+    flex-wrap: nowrap
+    justify-content: flex-start
+    overflow: scroll
+    height: fit-content
+    gap: 0.5rem
+    max-width: 100%
+      // padding-right: 45rem
+    &::-webkit-scrollbar
+        // display: none
+    .content
+        display: inline-flex
+        justify-content: center
+        align-items: center
+
+        .picture
+        img
+            object-fit: cover
+            width: 20rem
+            height: auto
+            @include breakpoints.break_MD()
+            width: 18rem
+            @include breakpoints.break_SM()
+            width: 15rem

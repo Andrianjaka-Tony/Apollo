@@ -1,0 +1,68 @@
+@use '../../../breakpoints'
+
+.form_add_artwork
+    background: #fff
+    width: 60vw
+    padding: 2rem 3rem
+    max-height: 90vh
+    overflow-y: scroll
+    position: relative
+    @include breakpoints.break_X_L()
+        width: 70vw
+    @include breakpoints.break_MD()
+        width: 90vw
+    .cross_icon
+        position: sticky
+        top: 1rem
+        cursor: pointer
+        margin-left: auto
+        left: 100%
+        z-index: 2
+        font-size: 1.8rem
+        transition: all 0.2s ease-in-out
+        &:hover
+            transform: scale(1.1)
+    .title
+        font-size: 2rem
+        font-family: At hauss bold
+        margin-bottom: 2rem
+
+    .row
+        display: flex
+        gap: 1.5rem
+        margin-bottom: 2rem
+        @include breakpoints.break_MD()
+            flex-wrap: wrap
+
+.button__
+    cursor: pointer
+    display: flex
+    justify-content: center
+    align-items: center
+    background: #000
+    color: #fff
+    display: flex
+    justify-content: center
+    margin: auto
+    align-items: center
+    padding: 0.68rem 1.45rem
+    transition: all 0.2s ease-in-out
+    &:hover
+        background: #6f6f6f
+    .text
+        font-size: 1.2rem
+        white-space: nowrap
+        text-align: center
+        text-transform: uppercase
+        width: auto
+        letter-spacing: 0.1rem
+        transition: all 0.2s ease-in-out
+        @include breakpoints.break_LG()
+            font-size: 1rem
+    .icon
+        font-size: 1.45rem
+        transition: all 0.3s ease-in-out
+        margin-bottom: -0.1rem
+        margin-left: 0.5rem
+        // path
+        //     fill: #fff
