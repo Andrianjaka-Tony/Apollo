@@ -1,10 +1,12 @@
 .container {
   width: 100vw;
   padding-inline: 2vw;
-  padding-block: 2vw;
+  padding-block: 10vw;
 
   .title {
     text-transform: uppercase;
-    margin-bottom: 4vw;
+    margin-bottom: 2vw;
+    font-size: 4vw;
+    font-weight: bold;
   }
 }
