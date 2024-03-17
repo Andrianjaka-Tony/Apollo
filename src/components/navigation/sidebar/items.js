@@ -15,13 +15,13 @@ export const items = [
     image: "/images/3.jpg",
   },
   {
-    name: "Marketplace",
-    to: "/marketplace",
-    image: "/images/4.jpg",
-  },
-  {
     name: "Profile",
     to: "/profile",
     image: "/images/4.jpg",
+  },
+  {
+    name: "Apollo-search",
+    to: "apollo-search",
+    image: "/control/1.webp",
   },
 ];
