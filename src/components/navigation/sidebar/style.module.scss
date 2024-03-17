@@ -79,10 +79,18 @@
       }
     }
 
-    .sidebar-email {
-      font-size: 0.8rem;
-      color: $color;
+    .sidebar-link {
+      font-size: 1.4rem;
       cursor: pointer;
+
+      a {
+        text-decoration: none;
+        color: $color;
+
+        [data-space="true"] {
+          width: 0.28rem;
+        }
+      }
     }
   }
 

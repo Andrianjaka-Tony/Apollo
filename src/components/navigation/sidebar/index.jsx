@@ -12,6 +12,7 @@ import WrappedText from "../../wrapped-text";
 import Item from "./item";
 import { items } from "./items";
 import { iconVariants, iconsVariants, sidebarCloseVariants } from "./anime";
+import { Link } from "react-router-dom";
 
 export default function Sidebar({ setSidebarOpen }) {
   const [imageIndex, setImageIndex] = useState(-1);
@@ -76,8 +77,10 @@ export default function Sidebar({ setSidebarOpen }) {
             </motion.div>
           ))}
         </motion.div>
-        <div className={styles["sidebar-email"]}>
-          <WrappedText text="apollo@gmail.com" transition={[0.7]} />
+        <div className={styles["sidebar-link"]}>
+          <Link to={"/"}>
+            <WrappedText text="SIgn in / up" transition={[0.7]} />
+          </Link>
         </div>
       </div>
     </motion.aside>

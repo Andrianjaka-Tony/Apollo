@@ -26,8 +26,9 @@ const Text = (props) => {
 export default function Tip() {
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Tip of the day</h2>
+      <h2 className={styles.title}>Art of the week</h2>
       <motion.img className={styles.image} src="https://www.velomag.com/wp-content/uploads/2021/03/guideachatgravel2021.jpg" alt="Astuce du jour" />
+      <h2 className={styles.title}>Tip of the day</h2>
       <div className={styles.data}>
         <p className={styles["tip-title"]}>Title</p>
         <Text className={styles["tip-content"]} text="March 14th 1879, Einstein was born." />
