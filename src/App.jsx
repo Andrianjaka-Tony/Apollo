@@ -1,6 +1,6 @@
 import { AnimatePresence } from "framer-motion";
 import "./App.scss";
-import useLenis from "./hooks/useLenis";
+import { useLenis } from "./hooks/useLenis";
 import Navigation from "./components/navigation";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./pages/home";

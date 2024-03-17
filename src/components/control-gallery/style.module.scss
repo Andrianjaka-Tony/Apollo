@@ -1,0 +1,37 @@
+.gallery {
+  width: 100vw;
+  height: 100vh;
+  margin-top: 5vw;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+
+  .draggable {
+    background: #242320;
+    position: relative;
+    height: 300vh;
+    width: 300vw;
+    top: -100vh;
+    left: -100vw;
+  }
+
+  .title {
+    color: #e4ddd4;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 4vw;
+  }
+
+  .left {
+    left: 0;
+    margin-left: 6vw;
+  }
+
+  .right {
+    right: 0;
+    margin-right: 6vw;
+  }
+}
