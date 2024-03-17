@@ -6,6 +6,8 @@ import Home from "./pages/home";
 import ArtWork from "./pages/art-work";
 import Gallery from "./pages/gallery";
 import Profile from "./pages/profile";
+import ApolloSearch from "./pages/ApolloSearch";
+import Sign from "./pages/Sign";
 import "./App.scss";
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
         <Route path="/art-work/:id" element={<ArtWork />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/sign_" element={<Sign />} />
+        <Route path="/apollo-search" element={<ApolloSearch />} />
       </Routes>
     </AnimatePresence>
   );

@@ -48,7 +48,7 @@ const useIdentity = (addNotifs) => {
       }),
       {
         headers: {
-          contentTypeHeaders,
+          ...contentTypeHeaders,
         },
       },
       true
@@ -73,7 +73,7 @@ const useIdentity = (addNotifs) => {
       }),
       {
         headers: {
-          contentTypeHeaders,
+          ...contentTypeHeaders,
         },
       },
       true
@@ -95,7 +95,7 @@ const useIdentity = (addNotifs) => {
       }),
       {
         headers: {
-          contentTypeHeaders,
+          ...contentTypeHeaders,
         },
       },
       true
@@ -115,7 +115,7 @@ const useIdentity = (addNotifs) => {
       JSON.stringify(formData),
       {
         headers: {
-          contentTypeHeaders,
+          ...contentTypeHeaders,
         },
       },
       true
@@ -126,8 +126,9 @@ const useIdentity = (addNotifs) => {
         if (to) document.location = to;
       })
       .catch((error) => {
+        console.log(error);
         addNotifs("error", "Email or password not correct.");
-        // console.log(error);
+        //
       });
   };
 
@@ -144,13 +145,14 @@ const useIdentity = (addNotifs) => {
       JSON.stringify(formData),
       {
         headers: {
-          contentTypeHeaders,
+          ...contentTypeHeaders,
         },
       },
       true
     )
       .then((response) => {
         console.log(response);
+        setUpStorageConnect(response);
         if (to) document.location = to;
       })
       .catch((error) => {

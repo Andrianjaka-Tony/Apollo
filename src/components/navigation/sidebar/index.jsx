@@ -78,8 +78,13 @@ export default function Sidebar({ setSidebarOpen }) {
           ))}
         </motion.div>
         <div className={styles["sidebar-link"]}>
-          <Link to={"/"}>
-            <WrappedText text="SIgn in / up" transition={[0.7]} />
+          <Link
+            to={"/sign_"}
+            onClick={() => {
+              setSidebarOpen(false);
+            }}
+          >
+            <WrappedText text="Sign in / up" transition={[0.7]} />
           </Link>
         </div>
       </div>

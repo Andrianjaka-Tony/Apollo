@@ -1,0 +1,164 @@
+@use '../../../breakpoints'
+
+.row_input
+    display: flex
+    align-items: flex-start
+    justify-content: flex-start
+    position: relative
+    width: fit-content
+    margin: 0.5rem auto 0.8rem auto
+    ._input
+        position: relative
+        width: 100%
+        padding: 1.2rem 0 0 0
+        transition: all 0.2s ease-in-out
+        @include breakpoints.break_MD()
+            padding: 1.4rem 0 0 0
+        @include breakpoints.break_XSM()
+            padding: 1.2rem 0 0 0
+        .icon_calendar
+            position: absolute
+            right: 1rem
+            top: 55%
+            background: var(--bg-color-body )
+
+            z-index: 2
+            pointer-events: none
+            &::after
+                content: ""
+                position: absolute
+                right: -65%
+                top: -5%
+                width: 0.77rem
+                z-index: 1
+                background: red
+                height: 100%
+                background: var(--bg-color-body )
+                pointer-events: none
+
+        input
+            width: 100%
+            padding: 1rem 0.85rem
+            outline: none
+            color: var(--text-color)
+            background: transparent
+            transition: all 0.2s ease-in-out
+            border-radius: 0.12rem
+            border: none
+            box-shadow: 0 0 0.1rem 0.05rem var(--box-shadow-color)
+            transition: all 0.2s ease-in-out
+
+            @include breakpoints.break_MD()
+                font-size: 0.87rem
+                padding: 1rem 0.85rem
+            @include breakpoints.break_XSM()
+                padding: 0.9rem 0.85rem
+                font-size: 0.82rem
+            &:focus
+                box-shadow: 0 0 0.1rem 0.05rem var(--primary)
+            &:-webkit-autofill,
+            &:-webkit-autofill:hover,
+            &:-webkit-autofill:focus,
+            &:-webkit-autofill:active
+                transition: background-color 5000s ease-in-out 0s
+        .placeholder
+            position: absolute
+            pointer-events: none
+            top: 48%
+            font-size: 0.9rem
+            color: var(--text-color)
+            transition: all 0.2s ease-in-out
+            left: 1rem
+            @include breakpoints.break_MD()
+                font-size: 0.82rem
+                top: 52.5%
+            @include breakpoints.break_XSM()
+                font-size: 0.77rem
+                top: 51.5%
+        .up
+            top: 0
+            left: 0.2rem
+            font-size: 0.75rem
+            font-weight: bolder
+            @include breakpoints.break_XSM()
+            top: -5%
+        .up_no
+            top: 0%
+            left: 0.2rem
+            font-size: 0.75rem
+            font-weight: bolder
+            @include breakpoints.break_XSM()
+                top: -3%
+
+    .label_file_container
+        margin: 1rem auto
+        width: 19rem
+        height: 19rem
+        display: flex
+        position: relative
+        justify-content: center
+        cursor: pointer
+        transition: all 0.2s ease-in-out
+        align-items: center
+        overflow: hidden
+        flex-direction: column
+        border-radius: 50%
+
+        // padding: 0.3rem
+        background: var(--bg-color-body)
+        box-shadow: 0 0 0rem 0.1rem var(--box-shadow-color)
+        @include breakpoints.break_XSM()
+            width: 15.5rem
+            margin-top: 0.2rem
+            height: 15.5rem
+
+        &:hover
+            .span
+                transform: scale(1.03)
+            .icon_container
+                transform: scale(1.13)
+        .icon_container
+            height: 6rem
+            width: 6rem
+            display: flex
+            transform: scale(1.1)
+            justify-content: center
+            align-items: center
+            transition: all 0.2s ease-in-out
+            margin-bottom: 0rem
+        .span
+            font-weight: bolder
+            font-size: 0.9rem
+            margin-top: 0.5rem
+            color: #5d5c5c
+            transition: all 0.2s ease-in-out
+            @include breakpoints.break_XSM()
+                font-size: 0.8rem
+
+        img
+            width: 100%
+            height: 100%
+            object-fit: cover
+        .icon
+            display: flex
+            justify-content: center
+            align-items: center
+            svg
+                @include breakpoints.break_XSM()
+                    width: 3rem
+    .add_file
+        position: absolute
+        z-index: 2
+        pointer-events: none
+        right: 40%
+        top: 40%
+        width: 3rem
+        height: 3rem
+        display: flex
+        justify-content: center
+        align-items: center
+        background: #ffffff2f
+        border-radius: 50%
+        padding: 0.6rem
+.fullWidth
+    width: 100%

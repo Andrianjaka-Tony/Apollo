@@ -1,0 +1,15 @@
+@use '../../breakpoints'
+.container_page_
+    display: flex
+    flex-direction: column
+    width: 100vw
+    margin: auto
+    transition: all 0.2s ease-in-out
+    align-items: center
+    padding-block: 8vw 4vw
+    @include breakpoints.break_LG()
+        padding-block: 12vw 4vw
+    @include breakpoints.break_MD()
+        padding-block: 15vw 4vw
+    @include breakpoints.break_SM()
+        padding-block: 18vw 4vw

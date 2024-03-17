@@ -64,3 +64,16 @@ html.lenis {
   font-family: At hauss regular;
   src: url(./fonts/AtHaussTRIAL-Regular.otf);
 }
+
+:root {
+  --primary: #120c0e;
+  --primary-hovered: #191818;
+  --box-shadow-color: #2f2f2f;
+  --bg-color: #fff;
+  --bg-color-body: #e4ddd4;
+  --bg-color-hovered: #edededcf;
+  --text-bold-color: #000000;
+  --text-color: #373737;
+  --input-bg: #fff2f200;
+  /* ///// */
+}
