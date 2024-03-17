@@ -2,6 +2,11 @@
   width: 100%;
   background: #e4ddd4;
   padding-bottom: 5vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
 
   .top {
     width: 100%;

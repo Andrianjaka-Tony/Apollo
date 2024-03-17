@@ -22,8 +22,6 @@ const Image = () => {
   return <motion.img variants={imageVariants} initial="initial" animate="animate" exit="exit" src="/images/1.jpg" alt="Hero image" className={styles.image} />;
 };
 
-// Expand your artistic horizons and ignite your creativity with our platform. Let your imagination soar as you share and discover a world of captivating artworks. Together, let's paint a canvas of inspiration and cultural enrichment. Keep exploring, keep creating, keep inspiring!
-
 export default function Hero() {
   return (
     <motion.div
