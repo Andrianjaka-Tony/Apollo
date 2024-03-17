@@ -1,0 +1,50 @@
+.fixed-image {
+  position: fixed;
+  top: 2vw;
+  left: 2vw;
+  z-index: 5;
+  width: calc(100vw - 4vw);
+
+  img {
+    width: 100%;
+  }
+}
+
+.container {
+  padding: 0 2vw;
+  width: 100vw;
+  padding-bottom: 5vw;
+
+  h1 {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .title {
+    text-transform: uppercase;
+    font-weight: inherit;
+    font-size: 7vw;
+    margin-top: 10vw;
+  }
+
+  .date {
+    font-size: 5vw;
+    margin-top: 1vw;
+
+    * {
+      font-family: Little muffin;
+    }
+  }
+
+  .image {
+    width: 100%;
+    margin-top: 10vw;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}

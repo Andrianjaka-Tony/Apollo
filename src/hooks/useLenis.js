@@ -1,9 +1,10 @@
 import Lenis from "@studio-freight/lenis";
 
-export default function useLenis() {
-  const lenis = new Lenis();
+export const lenisObject = new Lenis();
+
+export function useLenis() {
   function raf(time) {
-    lenis.raf(time);
+    lenisObject.raf(time);
     requestAnimationFrame(raf);
   }
   requestAnimationFrame(raf);
