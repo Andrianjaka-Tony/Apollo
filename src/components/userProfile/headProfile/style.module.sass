@@ -1,0 +1,218 @@
+@use '../../../breakpoints'
+.headeContainer
+  width: 84%
+  margin: auto
+  padding: 5rem 2rem 5rem 2rem
+  border-radius: 2rem 2rem 0 0
+  background: #f9f0f0
+  display: flex
+  z-index: 2
+  align-items: flex-start
+  gap: 1.5rem
+  @include breakpoints.break_LG()
+    padding: 4rem 1.8rem
+    flex-direction: column
+    align-items: center
+    width: 90%
+    margin-top: 7rem
+  @include breakpoints.break_MD()
+    align-items: center
+    margin-top: 5rem
+    padding-bottom: 3rem
+  @include breakpoints.break_SM()
+    width: 95%
+    padding-bottom: 1rem
+
+  .left
+    width: 40%
+    display: flex
+    flex-direction: column
+    align-items: center
+    .user_picture
+      width: 15.5rem
+      height: 15.5rem
+      border-radius: 50%
+      display: flex
+      justify-content: center
+      align-items: center
+      transition: all 0.2s ease-in-out
+      overflow: hidden
+      @include breakpoints.break_LG()
+        width: 14.5rem
+        height: 14.5rem
+      @include breakpoints.break_MD()
+        width: 12.5rem
+        height: 12.5rem
+        @include breakpoints.break_SM()
+          width: 10rem
+          height: 10rem
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
+
+    .userLocalisation
+      margin-top: 1.5rem
+      display: flex
+      align-items: center
+      flex-wrap: nowrap
+      .icon
+        width: 1.3rem
+        height: 1.3rem
+        display: flex
+        font-size: 1.1rem
+        justify-content: center
+        align-items: center
+        margin-right: 0.3rem
+        @include breakpoints.break_LG()
+          width: 1rem
+          height: 1rem
+
+      .text
+        display: flex
+        font-size: 0.78rem
+        white-space: nowrap
+
+  .right
+    display: flex
+    align-items: flex-start
+    flex-direction: column
+    @include breakpoints.break_LG()
+      align-items: center
+    .username
+      display: flex
+      position: relative
+      align-items: center
+      width: fit-content
+      margin-bottom: 1.8rem
+
+      .textUsername
+        font-size: 3.8rem
+        font-family: At hauss light
+        @include breakpoints.break_X_L()
+          font-size: 3.2rem
+        @include breakpoints.break_LG()
+          font-size: 3rem
+        @include breakpoints.break_MD()
+          font-size: 2.75rem
+          white-space: nowrap
+          overflow: hidden
+          text-overflow: ellipsis
+          max-width: 70vw
+        @include breakpoints.break_SM()
+          font-size: 2.2rem
+
+      .verified
+        position: absolute
+        right: -13%
+        top: 0%
+        width: 3rem
+        height: 3rem
+        display: flex
+        justify-content: center
+        align-items: center
+        font-size: 2.5rem
+        background: rgb(246, 246, 182)
+        border-radius: 50%
+        @include breakpoints.break_X_L()
+          font-size: 2.2rem
+        @include breakpoints.break_LG()
+          right: -20%
+        @include breakpoints.break_MD()
+          right: -12%
+          top: -2%
+          font-size: 1.7rem
+          width: 2rem
+          height: 2rem
+        @include breakpoints.break_SM()
+          width: 1.8rem
+          height: 1.8rem
+          font-size: 1.4rem
+
+        path
+          stroke-width: 0.2px
+
+    .actionsContainer
+      display: flex
+      align-items: center
+      gap: 0.6rem
+      margin-bottom: 3.7rem
+      flex-wrap: wrap
+      @include breakpoints.break_MD()
+        justify-content: center
+      .iconButtonAction
+        cursor: pointer
+        border: 2px solid #000
+        border-radius: 50%
+        width: 3rem
+        height: 3rem
+        display: flex
+        justify-content: center
+        align-items: center
+        transition: all 0.2s ease-in-out
+        @include breakpoints.break_X_L()
+          width: 2.5rem
+          height: 2.5rem
+        @include breakpoints.break_MD()
+          width: 2.2rem
+          height: 2.2rem
+
+        &:hover
+          transform: translateY(-0.4rem)
+
+        svg
+          font-size: 1.35rem
+          @include breakpoints.break_X_L()
+            font-size: 1.2rem
+          @include breakpoints.break_MD()
+            font-size: 1rem
+
+      .ButtonAction
+        padding: 0.92rem 1.5rem
+        border-radius: 1.5rem
+        color: #fff
+        background-color: #000
+        cursor: pointer
+        display: flex
+        align-items: center
+        transition: all 0.2s ease-in-out
+        @include breakpoints.break_LG()
+          padding: 0.85rem 1.4rem
+          font-size: 0.85rem
+        @include breakpoints.break_MD()
+          font-size: 0.8rem
+        &:hover
+          background-color: #5b5a5a
+
+        svg
+          margin-right: 0.5rem
+
+        span
+          font-size: 0.92rem
+          @include breakpoints.break_MD()
+            font-size: 0.85rem
+          @include breakpoints.break_SM()
+            font-size: 0.8rem
+
+    .actionsContainerRoles
+      display: flex
+      align-items: center
+      gap: 2rem
+      margin-bottom: 3.2rem
+      @include breakpoints.break_MD()
+        justify-content: center
+        width: 100%
+      .AboutUser
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        gap: 0.7rem
+        .AboutUserTitle
+          font-size: 0.85rem
+          @include breakpoints.break_MD()
+            font-size: 0.8rem
+
+        .AboutUserValue
+          font-size: 2.2rem
+          @include breakpoints.break_MD()
+            font-size: 1.8rem

@@ -10,7 +10,9 @@ export default function Navigation() {
   return createPortal(
     <>
       <Navbar isSidebarOpen={isSidebarOpen} setSidebarOpen={setSidebarOpen} />
-      <AnimatePresence mode="wait">{isSidebarOpen && <Sidebar isSidebarOpen={isSidebarOpen} setSidebarOpen={setSidebarOpen} />}</AnimatePresence>
+      <AnimatePresence mode="wait">
+        {isSidebarOpen && <Sidebar isSidebarOpen={isSidebarOpen} setSidebarOpen={setSidebarOpen} />}
+      </AnimatePresence>
     </>,
     document.body
   );

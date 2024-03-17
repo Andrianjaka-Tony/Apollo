@@ -1,0 +1,44 @@
+.ArtworkAddContainer
+    position: fixed
+    right: 2vw
+    bottom: 4.2vh
+    width: 3.5rem
+    height: 3.5rem
+    z-index: 3
+    background: #000
+    color: #fff
+    display: flex
+    justify-content: center
+    align-items: center
+    transition: all 0.2s ease-in-out
+    overflow: hidden
+    &:hover
+        width: 15rem
+        .buttonAdd
+            .icon
+                transform: scale(1.2) rotate(45deg)
+            .text
+                width: auto
+
+    .buttonAdd
+        height: 100%
+        width: 100%
+        cursor: pointer
+        display: flex
+        justify-content: center
+        align-items: center
+        .text
+            font-size: 1.5rem
+            white-space: nowrap
+            text-align: center
+            text-transform: uppercase
+            width: 0
+            transition: all 0.2s ease-in-out
+            overflow: hidden
+
+        .icon
+            font-size: 1.8rem
+            transition: all 0.3s ease-in-out
+            margin-bottom: -0.1rem
+            path
+                fill: #fff
