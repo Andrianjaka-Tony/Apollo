@@ -7,7 +7,9 @@ import Footer from "../../components/footer";
 export default function Exposition() {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-      <ControlGallery />
+      <div id="container">
+        <ControlGallery />
+      </div>
       <Footer />
     </motion.div>
   );

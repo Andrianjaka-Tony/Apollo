@@ -11,7 +11,7 @@ export const items = [
   },
   {
     name: "Exposition",
-    to: "/exposition",
+    to: "/exposition#container",
     image: "/images/3.jpg",
   },
   {
