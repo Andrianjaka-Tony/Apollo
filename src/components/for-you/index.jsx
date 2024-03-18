@@ -11,7 +11,7 @@ export default function ForYou() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch(`${api}/validation/recommandation/2`)
+    fetch(`${api}/validation/recommandation/4`)
       .then((response) => response.json())
       .then((response) => setData(response));
   }, []);

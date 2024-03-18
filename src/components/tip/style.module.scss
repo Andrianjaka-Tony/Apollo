@@ -24,9 +24,23 @@
     }
   }
 
-  .image {
-    width: 100%;
+  .image-container {
     margin-bottom: 10vw;
+    position: relative;
+
+    .curtain {
+      position: absolute;
+      background: #242320;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      transform-origin: top;
+    }
+
+    .image {
+      width: 100%;
+    }
   }
 
   .data {

@@ -25,6 +25,10 @@ const Text = (props) => {
 };
 
 export default function Tip() {
+  const ref = useRef(null);
+
+  const isInView = useInView(ref, { once: true });
+
   const [winner, setWinner] = useState({});
 
   useEffect(() => {
@@ -38,7 +42,10 @@ export default function Tip() {
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Art of the week</h2>
-      <motion.img className={styles.image} src={`http://192.168.88.21:8080/${winner.photo}`} alt="Art of the week" />
+      <motion.div ref={ref} className={styles["image-container"]}>
+        <motion.div initial={{ scaleY: 0 }} animate={{ scaleY: isInView ? 0 : 1 }} transition={{ delay: 0.4, duration: 1.2, ease: [0.34, 0.63, 0, 0.99] }} className={styles.curtain}></motion.div>
+        <motion.img className={styles.image} src={`${api}/${winner.photo}`} alt="Art of the week" />
+      </motion.div>
       <h2 className={styles.title}>Tip of the day</h2>
       <div className={styles.data}>
         <p className={styles["tip-title"]}>Title</p>

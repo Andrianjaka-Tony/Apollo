@@ -29,6 +29,7 @@ export default function ControlGallery() {
   useEffect(() => {
     window.addEventListener("scroll", () => {
       setReveal(false);
+      setIsModal(false);
       if (draggableRef.current) {
         draggableRef.current.style.transform = "translateX(0) translateY(0)";
       }

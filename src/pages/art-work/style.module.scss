@@ -27,6 +27,10 @@
     font-weight: inherit;
     font-size: 7vw;
     margin-top: 10vw;
+
+    [data-space="true"] {
+      width: 1.75vw;
+    }
   }
 
   .date {
@@ -40,7 +44,7 @@
 
   .image {
     width: 100%;
-    margin-top: 10vw;
+    margin-top: 15vw;
 
     img {
       width: 100%;
