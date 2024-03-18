@@ -42,7 +42,7 @@ export default function ArtWork() {
   return (
     <motion.div exit={{ opacity: 0 }}>
       <div className={styles.container}>
-        <h1 id="title" className={styles.title}>
+        <h1 id="art-title" className={styles.title}>
           {loaded && <WrappedText text={data.titre} transition={[1.4]} />}
         </h1>
         <h1 id="date" className={styles.date}>

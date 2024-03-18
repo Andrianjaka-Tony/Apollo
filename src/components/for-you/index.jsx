@@ -18,9 +18,8 @@ export default function ForYou() {
         Authorization: "Bearer " + token,
       },
     })
-      .then((response) => response.text())
-      .then(console.log);
-    // .then((response) => setData(response));
+      .then((response) => response.json())
+      .then((response) => setData(response));
   }, []);
 
   return (

@@ -27,7 +27,7 @@ export default function Item({ item, index, parallax = true, whileHover }) {
   };
 
   const change = () => {
-    navigate("/gallery/art-work/" + id + "#title");
+    navigate("/gallery/art-work/" + id + "#art-title");
   };
 
   return (
