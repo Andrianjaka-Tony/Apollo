@@ -4,7 +4,7 @@ import styles from "./style.module.scss";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
-export default function Item({ item, index, parallax = true }) {
+export default function Item({ item, index, parallax = true, whileHover }) {
   const navigate = useNavigate();
 
   const { id, photo } = item;
@@ -32,7 +32,7 @@ export default function Item({ item, index, parallax = true }) {
 
   return (
     <>
-      <motion.div data-classname="item" style={{ y: parallax === true ? y : 0 }} onClick={handleClick} ref={ref} data-key={index} className={styles.item}>
+      <motion.div whileHover={whileHover} data-classname="item" style={{ y: parallax === true ? y : 0 }} onClick={handleClick} ref={ref} data-key={index} className={styles.item}>
         <div data-classname="image" className={styles.image}>
           <img data-classname="item-image" src={`http://192.168.88.21:8080/${photo[0]}`} alt={item.image} />
           <motion.div initial={{ scaleY: 0 }} animate={{ scaleY: isInView ? 0 : 1 }} transition={{ delay: 0.4, duration: 1.2, ease: [0.34, 0.63, 0, 0.99] }} className={styles.curtain}></motion.div>

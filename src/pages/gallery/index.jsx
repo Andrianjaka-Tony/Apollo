@@ -7,6 +7,7 @@ import { api } from "../../helpers/url";
 
 export default function Gallery() {
   const [data, setData] = useState([]);
+  const [hovered, setHovered] = useState({});
 
   useEffect(() => {
     fetch(`${api}/apollo/art/oeuvres`)
@@ -14,19 +15,30 @@ export default function Gallery() {
       .then(({ data }) => setData(data));
   }, []);
 
+  const handleHover = (item) => {
+    setHovered({
+      author: item.auteur.nom,
+      title: item.titre,
+    });
+  };
+
   return (
-    <div className={styles.container}>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className={styles.container}>
       <div className={styles["items-container"]}>
         <motion.div className={styles.items}>
           {data.map((item, index) => (
-            <Item item={item} index={index} parallax={false} key={index} />
+            <Item whileHover={() => handleHover(item)} item={item} index={index} parallax={false} key={index} />
           ))}
         </motion.div>
       </div>
       <div className={styles.bottom}>
         <p className={styles.email}>apollo@gmail.com</p>
+        <div className={styles.detail}>
+          <p className={styles.author}>{hovered.author}</p>
+          <p className={styles.work}>{hovered.title}</p>
+        </div>
         <h1 className={styles.title}>Gallery</h1>
       </div>
-    </div>
+    </motion.div>
   );
 }

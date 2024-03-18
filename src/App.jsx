@@ -9,6 +9,7 @@ import Profile from "./pages/profile";
 import ApolloSearch from "./pages/ApolloSearch";
 import Sign from "./pages/Sign";
 import "./App.scss";
+import Exposition from "./pages/exposition";
 
 function App() {
   const location = useLocation();
@@ -25,6 +26,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/sign_" element={<Sign />} />
         <Route path="/apollo-search" element={<ApolloSearch />} />
+        <Route path="/exposition" element={<Exposition />} />
       </Routes>
     </AnimatePresence>
   );
