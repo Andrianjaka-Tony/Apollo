@@ -1,0 +1,50 @@
+.modal {
+  position: fixed;
+  top: 2vh;
+  left: 2vh;
+  height: calc(100vh - 4vh);
+  height: fit-content;
+  width: 450px;
+  z-index: 6;
+  cursor: default;
+  background: #e4ddd4;
+  color: black;
+  padding: 20px 15px;
+  border-radius: 8px;
+  transform-origin: top;
+
+  .image {
+    width: 100%;
+  }
+
+  .separator {
+    height: 35px;
+  }
+
+  .section {
+    width: 100%;
+
+    .title {
+      font-size: 14px;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .text {
+      margin-top: 8px;
+      font-size: 20px;
+    }
+  }
+
+  .close {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+
+    .icon {
+      height: 1.2rem;
+      width: 1.2rem;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 
 import styles from "./style.module.scss";
 import { images } from "./data";
 import Image from "./image";
 import { imageVariants } from "./anime";
 import { lenisObject } from "../../hooks/useLenis";
+import Modal from "./modal";
 
 export default function ControlGallery() {
   const l = lenisObject;
@@ -14,6 +15,8 @@ export default function ControlGallery() {
   const draggableRef = useRef(null);
 
   const [reveal, setReveal] = useState(false);
+  const [isModal, setIsModal] = useState(false);
+  const [modal, setModal] = useState({});
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -56,7 +59,17 @@ export default function ControlGallery() {
         ref={draggableRef}
       >
         {images.map(({ image, width, x, y, scale }, index) => (
-          <Image variants={imageVariants} custom={[Math.random() * 0.5 + 0.5, x, y, scale]} src={image} width={width} key={index} />
+          <Image
+            onClick={() => {
+              setIsModal(true);
+              setModal({ image });
+            }}
+            variants={imageVariants}
+            custom={[Math.random() * 0.5 + 0.5, x, y, scale]}
+            src={image}
+            width={width}
+            key={index}
+          />
         ))}
         <motion.div animate={{ opacity: reveal ? 1 : 0 }} className={styles.advice}>
           Drag to move
@@ -68,6 +81,7 @@ export default function ControlGallery() {
       <motion.div animate={{ opacity: reveal ? 0 : 1 }} className={styles.title + " " + styles.right}>
         <motion.p style={{ y: y2 }}>Events</motion.p>
       </motion.div>
+      <AnimatePresence mode="wait">{isModal && <Modal {...modal} setIsModal={setIsModal} />}</AnimatePresence>
     </motion.div>
   );
 }

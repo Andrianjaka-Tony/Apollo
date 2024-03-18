@@ -20,7 +20,7 @@ function App() {
       <Navigation />
       <Routes key={location.pathname} location={location}>
         <Route path="/" element={<Home />} />
-        <Route path="/art-work/:id" element={<ArtWork />} />
+        <Route path="/gallery/art-work/:id" element={<ArtWork />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/sign_" element={<Sign />} />
