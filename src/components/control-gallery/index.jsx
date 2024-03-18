@@ -26,6 +26,9 @@ export default function ControlGallery() {
   useEffect(() => {
     window.addEventListener("scroll", () => {
       setReveal(false);
+      if (draggableRef.current) {
+        draggableRef.current.style.transform = "translateX(0) translateY(0)";
+      }
     });
   }, []);
 
@@ -42,24 +45,28 @@ export default function ControlGallery() {
       <motion.div
         drag
         dragConstraints={{
-          top: -window.innerHeight / 2,
+          top: (-window.innerHeight * 2) / 3,
           left: -window.innerWidth / 2,
-          bottom: window.innerHeight / 2,
+          bottom: (window.innerHeight * 2) / 3,
           right: window.innerWidth / 2,
         }}
         dragMomentum={0.1}
+        id="draggable"
         className={styles.draggable}
         ref={draggableRef}
       >
         {images.map(({ image, width, x, y, scale }, index) => (
           <Image variants={imageVariants} custom={[Math.random() * 0.5 + 0.5, x, y, scale]} src={image} width={width} key={index} />
         ))}
+        <motion.div animate={{ opacity: reveal ? 1 : 0 }} className={styles.advice}>
+          Drag to move
+        </motion.div>
       </motion.div>
       <motion.div animate={{ opacity: reveal ? 0 : 1 }} className={styles.title + " " + styles.left}>
-        <motion.p style={{ y: y1 }}>Hello</motion.p>
+        <motion.p style={{ y: y1 }}>Next</motion.p>
       </motion.div>
       <motion.div animate={{ opacity: reveal ? 0 : 1 }} className={styles.title + " " + styles.right}>
-        <motion.p style={{ y: y2 }}>World</motion.p>
+        <motion.p style={{ y: y2 }}>Events</motion.p>
       </motion.div>
     </motion.div>
   );

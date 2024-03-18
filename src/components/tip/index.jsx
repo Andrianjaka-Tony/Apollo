@@ -1,8 +1,9 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 
 import styles from "./style.module.scss";
 import { titleVariants, wordVariants } from "./anime";
+import { api } from "../../helpers/url";
 
 const Text = (props) => {
   const { text } = props;
@@ -24,10 +25,20 @@ const Text = (props) => {
 };
 
 export default function Tip() {
+  const [winner, setWinner] = useState({});
+
+  useEffect(() => {
+    fetch(`${api}/validation/week`)
+      .then((response) => response.json())
+      .then((response) => {
+        setWinner(response);
+      });
+  }, []);
+
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Art of the week</h2>
-      <motion.img className={styles.image} src="https://www.velomag.com/wp-content/uploads/2021/03/guideachatgravel2021.jpg" alt="Astuce du jour" />
+      <motion.img className={styles.image} src={`http://192.168.88.21:8080/${winner.photo}`} alt="Art of the week" />
       <h2 className={styles.title}>Tip of the day</h2>
       <div className={styles.data}>
         <p className={styles["tip-title"]}>Title</p>

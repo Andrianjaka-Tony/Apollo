@@ -13,6 +13,16 @@
     width: 300vw;
     top: -100vh;
     left: -100vw;
+    transition: 200ms;
+
+    .advice {
+      position: absolute;
+      color: #e4ddd4;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%) scale(1);
+      font-size: 2vw;
+    }
   }
 
   .title {
