@@ -1,14 +1,23 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 import styles from "./style.module.scss";
 import { imageVariants, titleVariants, wordVariants } from "./anime";
 
 const Title = ({ title }) => {
+  const ref = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
+
   const words = title.split(" ");
 
   return (
-    <motion.h1 variants={titleVariants} initial="initial" animate="animate" exit="exit" className={styles.title}>
+    <motion.h1 style={{ y }} ref={ref} variants={titleVariants} initial="initial" animate="animate" exit="exit" className={styles.title}>
       {words.map((word, index) => (
         <motion.span className={styles.word} key={index}>
           <motion.span variants={wordVariants}>{word}</motion.span>

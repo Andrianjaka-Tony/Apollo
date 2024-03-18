@@ -11,9 +11,16 @@ export default function ForYou() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch(`${api}/validation/recommandation/4`)
-      .then((response) => response.json())
-      .then((response) => setData(response));
+    const token = localStorage.getItem("token");
+    fetch(`${api}/validation/recommandation/4`, {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((response) => response.text())
+      .then(console.log);
+    // .then((response) => setData(response));
   }, []);
 
   return (

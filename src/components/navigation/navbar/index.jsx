@@ -9,7 +9,7 @@ export default function Navbar({ setSidebarOpen }) {
   return (
     <nav className={styles.nav}>
       <h3 className={styles["nav-logo"]}>
-        <WrappedText text="Appolo" />
+        <WrappedText text="Apollo" />
       </h3>
       <span onClick={() => setSidebarOpen(true)} className={styles["nav-burger"]}>
         <HiMiniBars2 />

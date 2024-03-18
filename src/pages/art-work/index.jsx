@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { CiHeart } from "react-icons/ci";
 
 import styles from "./style.module.scss";
 import { useParams } from "react-router-dom";
@@ -34,6 +35,10 @@ export default function ArtWork() {
     return () => clearTimeout(timer);
   }, []);
 
+  const react = (event) => {
+    event.target.classList.add(styles.clicked);
+  };
+
   return (
     <motion.div exit={{ opacity: 0 }}>
       <div className={styles.container}>
@@ -49,15 +54,26 @@ export default function ArtWork() {
           <div>{loaded && data.categorie.nom}</div>
           <div>{loaded && data.provenance.nom}</div>
         </div>
-        <div className={styles.section}>
-          <p className={styles.label}>Description</p>
-          <p className={styles.value}>
-            {loaded && data.description}
-            {/* <br />
+        <div className={styles.bottom}>
+          <div className={styles.section}>
+            <p className={styles.label}>Description</p>
+            <p className={styles.value}>
+              {loaded && data.description}
+              {/* <br />
             <br />
             {loaded && data.descriptionIA} */}
-          </p>
+            </p>
+          </div>
+          <div className={styles.heart}>
+            <CiHeart onClick={react} />
+          </div>
         </div>
+        <div className={styles["link-container"]}>
+          <a target="_blank" rel="noopener noreferrer" className={styles.link} href={data.lien}>
+            3D projection
+          </a>
+        </div>
+        {/* <div className={styles.separator}></div> */}
         {loaded && (
           <motion.div layoutId="image" transition={{ duration: 0.8, ease: [0.34, 0.63, 0, 0.99] }} className={styles.image}>
             <img src={`${api}/${data.photo[0]}`} alt={"Hello world"} />

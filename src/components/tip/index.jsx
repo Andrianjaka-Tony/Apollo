@@ -54,9 +54,7 @@ export default function Tip() {
         <motion.img className={styles.image} src={`${api}/${winner.photo}`} alt="Art of the week" />
       </motion.div>
       <h2 className={styles.title}>Tip of the day</h2>
-      <div className={styles.data}>
-        <Text className={styles["tip-content"]} text={text} />
-      </div>
+      <div className={styles.data}>{text !== "" && <Text className={styles["tip-content"]} text={text} />}</div>
     </div>
   );
 }

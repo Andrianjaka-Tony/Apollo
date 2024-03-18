@@ -7,6 +7,7 @@ import Image from "./image";
 import { imageVariants } from "./anime";
 import { lenisObject } from "../../hooks/useLenis";
 import Modal from "./modal";
+import { api } from "../../helpers/url";
 
 export default function ControlGallery() {
   const l = lenisObject;
@@ -17,6 +18,7 @@ export default function ControlGallery() {
   const [reveal, setReveal] = useState(false);
   const [isModal, setIsModal] = useState(false);
   const [modal, setModal] = useState({});
+  const [items, setItems] = useState([]);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -34,6 +36,27 @@ export default function ControlGallery() {
         draggableRef.current.style.transform = "translateX(0) translateY(0)";
       }
     });
+  }, []);
+
+  useEffect(() => {
+    fetch(`${api}/apollo/art/expooeuvres/11`)
+      .then((response) => response.json())
+      .then((response) => {
+        const table = response.data.map((item, index) => {
+          const { expo, oeuvre } = item;
+          const { descriptionIA } = oeuvre;
+          const { width, x, y } = images[index];
+          return {
+            image: expo.photo,
+            title: expo.nom,
+            description: descriptionIA,
+            width,
+            x,
+            y,
+          };
+        });
+        setItems(table);
+      });
   }, []);
 
   const handleClick = () => {
@@ -59,15 +82,15 @@ export default function ControlGallery() {
         className={styles.draggable}
         ref={draggableRef}
       >
-        {images.map(({ image, width, x, y, scale }, index) => (
+        {items.map(({ title, description, image, width, x, y, scale }, index) => (
           <Image
             onClick={() => {
+              setModal({ title, description, image });
               setIsModal(true);
-              setModal({ image });
             }}
             variants={imageVariants}
             custom={[Math.random() * 0.5 + 0.5, x, y, scale]}
-            src={image}
+            src={`${api}/${image}`}
             width={width}
             key={index}
           />
@@ -82,7 +105,7 @@ export default function ControlGallery() {
       <motion.div animate={{ opacity: reveal ? 0 : 1 }} className={styles.title + " " + styles.right}>
         <motion.p style={{ y: y2 }}>Events</motion.p>
       </motion.div>
-      <AnimatePresence mode="wait">{isModal && <Modal {...modal} setIsModal={setIsModal} />}</AnimatePresence>
+      <AnimatePresence mode="wait">{isModal && <Modal title={modal.title} description={modal.description} image={modal.image} setIsModal={setIsModal} />}</AnimatePresence>
     </motion.div>
   );
 }

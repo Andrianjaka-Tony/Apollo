@@ -68,7 +68,7 @@ export default function Sidebar({ setSidebarOpen }) {
       </div>
       <div className={styles["sidebar-top"]}>
         <h3 className={styles["sidebar-logo"]}>
-          <WrappedText transition={[1]} text="Appolo" />
+          <WrappedText transition={[1]} text="Apollo" />
         </h3>
         <motion.span onClick={() => setSidebarOpen(false)} variants={sidebarCloseVariants} initial="initial" animate="animate" exit="exit" className={styles["sidebar-close"]}>
           <IoCloseSharp />
