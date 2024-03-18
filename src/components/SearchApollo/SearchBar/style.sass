@@ -8,12 +8,51 @@ $color_m_hovered: #3c2a14
     flex-direction: column
     width: 60vw
     margin-top: 2rem
+    margin-bottom: 4rem
+
     @include breakpoints.break_LG()
         width: 75vw
     @include breakpoints.break_MD()
         width: 85vw
     @include breakpoints.break_SM()
         width: 90vw
+    .photo_lens
+        margin: 2.3rem auto
+        display: flex
+        overflow: hidden
+        justify-content: center
+        align-items: center
+        position: absolute
+        width: 4rem
+        height: 4rem
+        right: -5rem
+        bottom: -1.65rem
+        cursor: pointer
+        transition: all 0.2s ease-in-out
+
+        &:hover
+            transform: scale(1.02)
+        @include breakpoints.break_MD()
+            right: 5%
+            transform: -50%
+            bottom: 6rem
+
+        .picture_lens
+            position: absolute
+            left: 50%
+            top: 50%
+            transform: translate(-50%, -50%)
+            width: 100%
+            cursor: pointer
+            height: 100%
+            display: flex
+            justify-content: center
+            align-items: center
+            img
+                width: 80%
+                height: 80%
+                object-fit: cover
+
     .search_bar
         width: 100%
         display: flex

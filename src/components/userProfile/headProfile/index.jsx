@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./style.module.sass";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { PiSealCheck } from "react-icons/pi";
@@ -7,35 +7,47 @@ import { IoMailSharp } from "react-icons/io5";
 import { BsShareFill } from "react-icons/bs";
 import { motion } from "framer-motion";
 import { headeProfileVariants } from "./anime";
+import { URL } from "../../../utils/Alaivo";
+import { MdAlternateEmail } from "react-icons/md";
 
 const social = [<FaInstagram />, <FaDribbble />, <FaTwitter />];
-const aboutUser = [
+let aboutUser = [
   {
     title: "Role",
     value: "Design",
   },
   {
     title: "Experience",
-    value: "26 years",
+    value: "0 years",
   },
 ];
 const HeadProfile = () => {
+  const user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : undefined;
+  const [about, setAbout] = useState(aboutUser);
+  useEffect(() => {
+    if (user) {
+      console.log(user);
+      aboutUser[0].value = user.profile.nom;
+      setAbout(aboutUser);
+    }
+  }, []);
+
   return (
     <motion.div className={styles.headeContainer} variants={headeProfileVariants} initial="initial" animate="animate" exit="exit">
       <div className={styles.left}>
         <div className={styles.user_picture}>
-          <img src="/images/1.jpg" alt="" />
+          <img src={user ? URL + user.pdp.replace(/\\/g, "/") : "/images/1.jpg"} alt="" />
         </div>
         <div className={styles.userLocalisation}>
           <div className={styles.icon}>
-            <FaMapMarkerAlt />
+            <MdAlternateEmail />
           </div>
-          <div className={styles.text}>Los Angeles new Avenue 09</div>
+          <div className={styles.text}>{user ? user.email : "xxxxxx.email.com"}</div>
         </div>
       </div>
       <div className={styles.right}>
         <div className={styles.username}>
-          <div className={styles.textUsername}>Broklin Simmons</div>
+          <div className={styles.textUsername}> {user ? user.nom : "[ Your name ]"}</div>
           <div className={styles.verified}>
             <PiSealCheck />
           </div>
@@ -48,7 +60,7 @@ const HeadProfile = () => {
           <ActionButton icon={<BsShareFill />} text={"Share"} />
         </div>
         <div className={styles.actionsContainerRoles}>
-          {aboutUser.map((about, index) => (
+          {about.map((about, index) => (
             <AboutUser {...about} key={index} />
           ))}
         </div>

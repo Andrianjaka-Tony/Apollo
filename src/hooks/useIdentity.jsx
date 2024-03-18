@@ -139,25 +139,29 @@ const useIdentity = (addNotifs) => {
     localStorage.setItem(userDetails, JSON.stringify(data.details_user_));
   };
 
-  const signUp = (formData, to) => {
-    alaivoPost(
-      registerURL,
-      JSON.stringify(formData),
-      {
-        headers: {
-          ...contentTypeHeaders,
+  const signUp = async (formData, to) => {
+    return new Promise((resolve, reject) => {
+      alaivoPost(
+        registerURL,
+        JSON.stringify(formData),
+        {
+          headers: {
+            ...contentTypeHeaders,
+          },
         },
-      },
-      true
-    )
-      .then((response) => {
-        console.log(response);
-        setUpStorageConnect(response);
-        if (to) document.location = to;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+        true
+      )
+        .then((response) => {
+          console.log(response);
+          setUpStorageConnect(response);
+          resolve(true);
+          // if (to) document.location = to;
+        })
+        .catch((error) => {
+          console.log(error);
+          reject(false);
+        });
+    });
   };
 
   return {
@@ -178,7 +182,7 @@ const p = `eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJVU0VSIl0sInN1YiI6ImplYW5AZ21haWwu
 `;
 export const getHeaderAuthJWT = () => ({
   headers: {
-    Authorization: "Bearer " + p, //tokenStocked,
+    Authorization: "Bearer " + localStorage.getItem(tokenStocked),
     ...contentTypeHeaders,
   },
 });

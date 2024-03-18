@@ -3,28 +3,20 @@ import styles from "./style.module.sass";
 import WrappedText from "../../wrapped-text";
 import { AnimatePresence } from "framer-motion";
 import SliderCard from "../../sliderCard";
+import { alaivoGet } from "../../../utils/Alaivo";
 
 const sections = [
   {
-    label: "Expositions",
-    path: "expo",
-    content: 12,
-  },
-  {
-    label: "Shares",
-    path: "sahre",
-    content: 1,
-  },
-  {
-    label: "Favs",
-    path: "ssa",
-    content: 22,
+    label: "Oeuvres",
+    path: "apollo/art/oeuvres/user",
   },
 ];
 
 const AboutProfile = () => {
   const [sectionActive, setSectionActive] = useState(sections[0]);
   const [showSection, setShowSection] = useState(false);
+  const user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : undefined;
+  const { getOeuvres, oeuvres, loading } = useGetData(sections[0]);
   useEffect(() => {
     setTimeout(() => {
       setShowSection(true);
@@ -49,6 +41,7 @@ const AboutProfile = () => {
                   onClick={() => {
                     if (sectionActive.path !== section.path) setShowSection(false);
                     setSectionActive(section);
+                    getOeuvres(section.path);
                   }}
                 >
                   {section.label}
@@ -56,11 +49,28 @@ const AboutProfile = () => {
               );
             })}
           </div>
-          <SliderCard contents={[...Array(sectionActive.content).keys()]} />
+          <SliderCard contents={oeuvres} loading={loading} />
         </div>
       </div>
     </>
   );
+};
+
+const useGetData = (section) => {
+  const [oeuvres, setOeuvres] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getOeuvres(section.path);
+  }, []);
+
+  const getOeuvres = async (path) => {
+    setLoading(true);
+    let res = await alaivoGet(path, null, false);
+    setLoading(false);
+    setOeuvres(res.data);
+  };
+  return { oeuvres, getOeuvres, loading };
 };
 
 export default AboutProfile;

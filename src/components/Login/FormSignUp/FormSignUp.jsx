@@ -9,26 +9,42 @@ import { resizeFile } from "../../../utils/Files";
 import { useMyNotifs } from "../../Notif/useNotifs";
 import "./FormSignUp.sass";
 import useIdentity from "../../../hooks/useIdentity";
+import Modal from "../../Modal";
+import PreferenceForm from "../PreferenceForm";
 
 const FormSignUp = ({ go = () => {} }) => {
   const { profiles } = useGetData();
   const { addNotifs, notifs } = useMyNotifs();
   const [loading, setLoading] = useState(false);
   const { signUp } = useIdentity(addNotifs);
+  const [showPref, setShowPref] = useState(false);
   const stepCount = 4;
   const handleSubmit = async (formData) => {
     let data = { ...formData };
     data.pdp = await resizeFile(data.pdp);
     setLoading(true);
-    signUp(data, "/");
+    let res = await signUp(data, "/");
+    if (res) {
+      //
+      addNotifs("ok", "Account created successfully");
+      setShowPref(true);
+    }
   };
   const { backStep, formData, nextStep, moveStep, handleForm, handleInputForm, step } = UseHandleForm(stepCount, [null, null, null, handleSubmit]);
   const [genders] = useState([
     { label: "Homme", value: 0 },
     { label: "Femme", value: 1 },
   ]);
+
   return (
     <div className="sign_up_form">
+      <AnimatePresence>
+        {showPref && (
+          <Modal>
+            <PreferenceForm />
+          </Modal>
+        )}
+      </AnimatePresence>
       {notifs.map((map) => map)}
       <div className="logo">
         <LogoBig />

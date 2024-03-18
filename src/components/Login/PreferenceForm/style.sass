@@ -1,0 +1,75 @@
+.pref_form
+    display: flex
+    flex-direction: column
+    align-items: center
+    padding: 2rem 3.5rem
+
+    border-radius: 0.5rem
+    background: #fff
+    width: 30rem
+    .title
+        font-size: 2.5rem
+        margin-bottom: 1rem
+    .subtitle
+        text-align: center
+        font-size: 1.1rem
+        color: #605f5f
+    .step_list
+        width: 100%
+        display: flex
+        gap: 1rem
+        justify-content: center
+        align-items: center
+        margin: 1.5rem 1rem 1rem 1rem
+        .step
+            width: 0.6rem
+            border-radius: 50%
+            height: 0.6rem
+            background: #6e6c6c49
+            transition: all 0.2s ease-in-out
+        .active
+            background: #000
+    .list
+        display: grid
+        width: 100%
+        gap: 1rem
+        padding: 2rem 0
+        grid-template-columns: repeat(auto-fill,minmax(10rem,1fr))
+        grid-auto-rows: 4rem
+        margin-bottom: 1.5rem
+        .block
+            display: flex
+            flex-direction: column
+            cursor: pointer
+            align-items: center
+            justify-content: center
+            border-radius: 0.2rem
+            font-size: 0.95rem
+            background: #fff
+            box-shadow: 0 0 0.3rem 0.1rem #36343436
+            transition: all 0.2s ease-in-out
+            &:hover
+                background: #000
+                color: #fff
+    .skip
+        cursor: pointer
+        display: flex
+        justify-content: center
+        align-items: center
+        background: #000
+        color: #fff
+        display: flex
+        justify-content: center
+        margin: auto
+        align-items: center
+        padding: 0.82rem 3rem
+        transition: all 0.2s ease-in-out
+        font-size: 1rem
+        white-space: nowrap
+        text-align: center
+        width: auto
+        border-radius: 0.3rem
+        margin-left: auto
+        transition: all 0.2s ease-in-out
+        &:hover
+            background: #6f6f6f

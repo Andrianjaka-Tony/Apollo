@@ -1,9 +1,12 @@
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CardVariants } from "../anime";
+import { URL } from "../../../utils/Alaivo";
+import { useNavigate } from "react-router-dom";
 import styles from "./style.module.sass";
 
-const ArtworkCard = ({ index = 0, x = 0, y = 0 }) => {
+const ArtworkCard = ({ index = 0, x = 0, y = 0, titre = "", auteur = "", photo = [], id = -1 }) => {
+  const nav = useNavigate();
   const [showCursor, setShowCursor] = useState(false);
   const position = {
     left: x + 20 + "px",
@@ -18,7 +21,15 @@ const ArtworkCard = ({ index = 0, x = 0, y = 0 }) => {
 
   return (
     <>
-      <motion.div className={styles.content} variants={CardVariants} onMouseEnter={onCursor} onMouseLeave={hideCursor}>
+      <motion.div
+        className={styles.content}
+        variants={CardVariants}
+        onMouseEnter={onCursor}
+        onMouseLeave={hideCursor}
+        onClick={() => {
+          nav(`/gallery/art-work/${id}#title`);
+        }}
+      >
         <AnimatePresence mode="">
           {showCursor && (
             <motion.div
@@ -44,13 +55,13 @@ const ArtworkCard = ({ index = 0, x = 0, y = 0 }) => {
               }}
             >
               <div className={styles.square}></div>
-              Expo {index}
+              {titre + " - " + auteur.nom}
             </motion.div>
           )}
         </AnimatePresence>
 
         <div className={styles.picture}>
-          <img src={index % 2 === 0 ? "/images/2.jpg" : "/images/5.jpg"} alt="" />
+          <img src={URL + photo} alt="" />
         </div>
       </motion.div>
     </>

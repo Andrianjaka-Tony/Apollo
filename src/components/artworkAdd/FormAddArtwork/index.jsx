@@ -7,12 +7,14 @@ import { resizeFile } from "../../../utils/Files";
 import { IoCheckmark } from "react-icons/io5";
 import { useMyNotifs } from "../../Notif/useNotifs";
 import { RxCross1 } from "react-icons/rx";
+import Loader from "../../ChatBox/Loader/Loader";
 import "./style.sass";
 
 const FormAddArtwork = ({ closer = () => {} }) => {
   const { formData, handleInputForm } = useForm();
   const { addNotifs, notifs } = useMyNotifs();
-  const { categories, origins, genres, types, auteurs } = useGetData();
+  const { categories, origins, genres, types, auteurs, palettes } = useGetData();
+  const [loading, setLoading] = useState(false);
   let years = [];
   for (let i = 1900; i < new Date().getFullYear() + 1; i++) {
     years.push({
@@ -24,16 +26,21 @@ const FormAddArtwork = ({ closer = () => {} }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let data = { ...formData };
+    setLoading(true);
     let pictures = [];
     for (let i = 0; i < data.photo.length; i++) {
       pictures.push(await resizeFile(data.photo[i]));
     }
     data.photo = pictures;
+
     let res = await alaivoPost("apollo/art/oeuvres", JSON.stringify(data), null, false);
+    setLoading(false);
     console.log(res);
     addNotifs(res.status.status, res.status.details, 1500);
     if (res.status.status === "ok") {
-      closer();
+      setTimeout(() => {
+        closer();
+      }, 500);
     }
   };
 
@@ -69,12 +76,19 @@ const FormAddArtwork = ({ closer = () => {} }) => {
         </div>
         <div className="row">
           <Select title={"Author"} fullWidth optionsType={auteurs} onChange={handleInputForm} name={"auteur"} />
+          <Select title={"Palette"} fullWidth optionsType={palettes} onChange={handleInputForm} name={"palette"} />
         </div>
         <button className="button__">
-          <div className="text">Register</div>
-          <div className="icon">
-            <IoCheckmark />
-          </div>
+          {loading ? (
+            <Loader size="2rem" white />
+          ) : (
+            <>
+              <div className="text">Register</div>
+              <div className="icon">
+                <IoCheckmark />
+              </div>
+            </>
+          )}
         </button>
       </form>
     </div>
@@ -87,6 +101,7 @@ const useGetData = () => {
   const [genres, setgenres] = useState([]);
   const [types, settypes] = useState([]);
   const [auteurs, setauteurs] = useState([]);
+  const [palettes, setpalettes] = useState([]);
 
   useEffect(() => {
     getcategoriess();
@@ -94,6 +109,7 @@ const useGetData = () => {
     getgenres();
     gettypes();
     getauteurs();
+    getpalette();
   }, []);
 
   const getcategoriess = async () => {
@@ -116,6 +132,17 @@ const useGetData = () => {
     });
 
     setorigins(res);
+  };
+  const getpalette = async () => {
+    let res = await alaivoGet("apollo/art/palettes", null, true);
+    res = res.data.map((row) => {
+      return {
+        value: row,
+        label: row.nom,
+      };
+    });
+
+    setpalettes(res);
   };
 
   const getgenres = async () => {
@@ -152,7 +179,7 @@ const useGetData = () => {
     setauteurs(res);
   };
 
-  return { categories, origins, types, genres, auteurs };
+  return { categories, origins, types, genres, auteurs, palettes };
 };
 
 export default FormAddArtwork;

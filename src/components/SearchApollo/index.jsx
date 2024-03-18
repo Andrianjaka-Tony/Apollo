@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import WrappedText from "../wrapped-text";
 import SearchBar from "./SearchBar";
+import { motion } from "framer-motion";
+import { GoArrowUpRight } from "react-icons/go";
+import CardSearch from "./CardSearch";
+import { listVariants } from "./anime";
+import { useNavigate } from "react-router-dom";
 import "./style.sass";
 
 const SearchApollo = () => {
   const [artworks, setArtworks] = useState([]);
   const [loading, setLoading] = useState(false);
+  const nav = useNavigate();
 
   return (
     <>
@@ -13,13 +19,23 @@ const SearchApollo = () => {
         <div className="title">
           <WrappedText text="Search" />
         </div>
-        <SearchBar />
+        <SearchBar setData={setArtworks} setLoading={setLoading} />
       </div>
-      <div className="list_result">
-        {[...Array(12).keys()].map((k) => (
-          <div className="item skeleton" key={k}></div>
-        ))}
-      </div>
+      <motion.div className="list_result" variants={listVariants} initial="initial" animate="animate" exit={"exit"}>
+        {loading
+          ? [...Array(10).keys()].map((k, index) => <CardSearch {...k} key={index} loading={loading} icon={<GoArrowUpRight className="go_to_icon" />} />)
+          : artworks.map((artwork, index) => (
+              <CardSearch
+                {...artwork}
+                key={index}
+                loading={loading}
+                icon={<GoArrowUpRight className="go_to_icon" />}
+                onClick={() => {
+                  nav(`/gallery/art-work/${artwork.id}#title`);
+                }}
+              />
+            ))}
+      </motion.div>
     </>
   );
 };

@@ -10,9 +10,6 @@ const UseHandleForm = (stepNumber = 1, formSubmit = [async () => {}]) => {
     if (e.target.type === "file") setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value[0] }));
     else setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
 
   const handleForm = async (e) => {
     e.preventDefault();

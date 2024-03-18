@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { FaTwitter } from "react-icons/fa6";
 import { FaLinkedinIn } from "react-icons/fa6";
@@ -16,6 +16,11 @@ import { Link } from "react-router-dom";
 
 export default function Sidebar({ setSidebarOpen }) {
   const [imageIndex, setImageIndex] = useState(-1);
+  const [isLogged, setLogged] = useState(false);
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (user) setLogged(true);
+  }, []);
 
   const icons = [<FaTwitter />, <FaLinkedinIn />, <FaInstagram />, <FaFacebookF />, <FaGithub />];
 
@@ -81,10 +86,11 @@ export default function Sidebar({ setSidebarOpen }) {
           <Link
             to={"/sign_"}
             onClick={() => {
+              localStorage.removeItem("user");
               setSidebarOpen(false);
             }}
           >
-            <WrappedText text="Sign in / up" transition={[0.7]} />
+            <WrappedText text={isLogged ? "Sign out" : "Sign in / up"} transition={[0.7]} />
           </Link>
         </div>
       </div>
